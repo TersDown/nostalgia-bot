@@ -64,7 +64,7 @@ Si nombras los archivos con `S01E05` o `1x05`, el recomendador sabe qué capítu
 ## Ajustes frecuentes
 - **Voz, duración y número de partes**: `resumen` en `config.yaml`.
 - **Pausar una serie**: `activa: false`.
-- **Modelo de Gemini**: si Google retira `gemini-2.5-flash`, cámbialo en `gemini.modelo` por el flash gratuito vigente.
+- **Modelo de Gemini**: si Google retira `gemini-3.8-flash`, cámbialo en `gemini.modelo` por el flash gratuito vigente.
 - **GitHub pausa los cron** de un repositorio público tras 60 días sin commits. Los commits de estado lo mantienen activo
   mientras haya publicaciones.
 

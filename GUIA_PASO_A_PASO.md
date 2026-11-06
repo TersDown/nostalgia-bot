@@ -132,7 +132,7 @@ Este es el paso más técnico. Síguelo al pie de la letra.
 3. [ ] Copia la clave (empieza con `AIza...`) en `claves.txt` como `GEMINI_API_KEY`.
 4. [ ] **No actives la facturación** (*billing*) en ese proyecto: así siempre se queda en la capa gratuita, y si pasas el
       límite, el sistema espera y reintenta en vez de cobrarte.
-5. [ ] Mira en AI Studio qué modelos *Flash* gratuitos hay. Si `gemini-2.5-flash` ya no aparece, anota el nombre del
+5. [ ] Mira en AI Studio qué modelos *Flash* gratuitos hay. Si `gemini-3.8-flash` ya no aparece, anota el nombre del
       flash vigente para el Paso 7.
 
 > En la capa gratuita, Google puede usar lo que envías para mejorar sus productos. Aquí solo se envían capítulos y textos
@@ -228,7 +228,7 @@ rclone mkdir "drive:Nostalgia/entrada/Los Padrinos Magicos"
 Abre `C:\Users\marti\OneDrive\Documentos\FACEBOOK\config.yaml` en VS Code y revisa:
 
 - [ ] `pagina.nombre`: el nombre de tu página (sale como marca de agua en los videos).
-- [ ] `gemini.modelo`: cámbialo solo si en el Paso 3 viste que `gemini-2.5-flash` ya no existe.
+- [ ] `gemini.modelo`: cámbialo solo si en el Paso 3 viste que `gemini-3.8-flash` ya no existe.
 - [ ] `horarios`: horas de los Reels y del video largo (hora de México). Ajústalas si quieres.
 - [ ] `resumen.voz`: `es-MX-JorgeNeural` (hombre) o `es-MX-DaliaNeural` (mujer).
 - [ ] `resumen.palabras_por_parte`: `[150, 200]` da Reels de ~60 a 80 s. No pases de 200: si la narración se pasa de
