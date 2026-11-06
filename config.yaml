@@ -1,0 +1,66 @@
+# Configuración de la página. Edita este archivo y haz commit: los workflows lo leen en cada ejecución.
+
+pagina:
+  nombre: "Nostalgia Animada"          # aparece como marca de agua en los videos
+  zona_horaria: "America/Mexico_City"
+  graph_api: "v23.0"
+
+gemini:
+  # Revisa en aistudio.google.com qué modelos "flash" gratuitos hay disponibles y cámbialo si este deja de existir.
+  modelo: "gemini-2.5-flash"
+
+# Horas locales (zona_horaria) en las que se programan los videos.
+horarios:
+  reel: ["13:00", "17:00", "20:00"]
+  largo: ["21:00"]
+
+resumen:
+  voz: "es-MX-JorgeNeural"             # otras: es-MX-DaliaNeural, es-CO-GonzaloNeural, es-AR-TomasNeural
+  velocidad: "+8%"
+  partes_min: 3
+  partes_max: 6                        # Gemini corta en los momentos de suspenso, así que cada parte dura distinto
+  palabras_por_parte: [150, 200]       # ~60-80 s de narración por Reel
+  fragmento_max_seg: 3.5               # duración máxima de cada corte del capítulo
+  reel_max_seg: 90                     # máximo de la API de Reels; si una parte se pasa, se quitan frases del medio
+
+# Cierre de cada video (sin intro): un tramo del capítulo desenfocado con texto encima.
+tarjetas:
+  segundos: 2.5
+  cierre_continua: ["Continúa en la parte {siguiente}", "Sigue la página para no perdértela"]   # partes intermedias
+  cierre: ["¿Te acordabas de este capítulo?", "Comenta y sigue la página"]                     # última parte y video largo
+
+aprobacion:
+  activa: true                         # true = nada se programa hasta que toques "Aprobar" en Telegram
+  enviar_videos: true                  # te manda cada Reel a Telegram para verlo antes de aprobar
+
+memes:
+  plantillas_a_considerar: 25          # plantillas de Imgflip que se le muestran a Gemini en cada meme
+  intentos: 3
+  palabras_prohibidas: [muerte, suicidio, droga, sexo, porno, nazi, violación, política, presidente]
+
+almacenamiento:
+  # remote de rclone + carpeta raíz. Dentro deben existir: entrada/<serie>/, procesados/, errores/, pendientes/
+  remoto: "drive:Nostalgia"
+  extensiones: [".mp4", ".mkv", ".avi", ".mov", ".webm", ".m4v"]
+
+alertas:
+  dias_minimos: 3                      # avisar por Telegram si quedan menos días de Reels programados
+
+# "carpeta" debe coincidir con el nombre de la subcarpeta en entrada/. "tvmaze" es el nombre para buscar
+# la lista de capítulos en tvmaze.com (normalmente el título original en inglés).
+series:
+  - carpeta: "Dragon Ball Z"
+    tvmaze: "Dragon Ball Z"
+    activa: true
+  - carpeta: "Hey Arnold"
+    tvmaze: "Hey Arnold!"
+    activa: False
+  - carpeta: "Los Simpson"
+    tvmaze: "The Simpsons"
+    activa: true
+  - carpeta: "Bob Esponja"
+    tvmaze: "SpongeBob SquarePants"
+    activa: true
+  - carpeta: "Los Padrinos Magicos"
+    tvmaze: "The Fairly OddParents"
+    activa: False

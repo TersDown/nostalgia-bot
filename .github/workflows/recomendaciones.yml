@@ -1,0 +1,31 @@
+name: Recomendaciones
+
+on:
+  schedule:
+    # 9:00 hora de México. Los domingos manda el informe completo; los demás días solo si falta contenido.
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+    inputs:
+      semanal:
+        description: "Forzar el informe semanal completo"
+        type: boolean
+        default: true
+
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+      FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m src.recommend ${{ inputs.semanal && '--semanal' || '' }}
