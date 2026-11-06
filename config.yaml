@@ -8,6 +8,8 @@ pagina:
 gemini:
   # Revisa en aistudio.google.com qué modelos "flash" gratuitos hay disponibles y cámbialo si este deja de existir.
   modelo: "gemini-3.8-flash"
+  razonamiento: "low"                  # minimal, low, medium o high: más alto = mejor pero más lento
+  timeout_seg: 300                     # si Gemini no responde en este tiempo, se reintenta
 
 # Horas locales (zona_horaria) en las que se programan los videos.
 horarios:
